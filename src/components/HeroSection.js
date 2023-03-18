@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles/Button";
 
 const HeroSection = ({ myData }) => {
-  const { name } = myData;
+  // const { name } = myData;
+
+  const [name, setName] = useState(myData.name)
 
   return (
     <Wrapper>
@@ -11,21 +14,19 @@ const HeroSection = ({ myData }) => {
         <div className="grid grid-two-column">
           <div className="hero-section-data">
             <p className="intro-data">Welcome to </p>
-            <h1> {name} </h1>
+            <h2> {name} </h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-              atque temporibus veniam doloribus libero ad error omnis voluptates
-              animi! Suscipit sapiente.
+            e-Kalyanam is a pilgrimage and darshan site based in India giving pilgrims and tourists a one-stop portal to travel around India&#8217;s top religious destinations, to order prasad from your home, spiritual store and many more...
             </p>
             <NavLink>
-              <Button>show now</Button>
+              <Button onClick={()=>setName('e-Kalyanam')} >show now</Button>
             </NavLink>
           </div>
           {/* our homepage image  */}
           <div className="hero-section-image">
             <figure>
               <img
-                src="images/hero.jpg"
+                src="images/hero1.jpg"
                 alt="hero-section-photo"
                 className="img-style"
               />
@@ -50,8 +51,8 @@ const Wrapper = styled.section`
       margin: 2rem 0;
     }
 
-    h1 {
-      text-transform: capitalize;
+    h2 {
+      // text-transform: capitalize;
       font-weight: bold;
     }
 
@@ -82,8 +83,9 @@ const Wrapper = styled.section`
     }
   }
   .img-style {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 250px;
+    
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
